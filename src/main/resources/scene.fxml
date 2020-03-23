@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.*?>
+
+<AnchorPane maxHeight="650.0" maxWidth="1345.0" minHeight="570.0" minWidth="1300.0" prefHeight="570.0" prefWidth="1345.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scene.Controller">
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+   <AnchorPane prefHeight="100.0" prefWidth="1336.0">
+      <Label fx:id="title" alignment="CENTER" layoutX="787.0" layoutY="10.0" prefHeight="30.0" prefWidth="139.0" text="ВЕДОМОСТЬ №" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="762.0" layoutY="43.0" prefHeight="30.0" text="УЧЕТА ОСТАТКОВ ПРОДУКТОВ И ТОВАРОВ НА СКЛАДЕ (В КЛАДОВОЙ)" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="22.0" text="Организация" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="14.0" layoutY="62.0" text="Подразделение" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <PrefixSelectionComboBox fx:id="organization" layoutX="131.0" layoutY="15.0" onAction="#organizationSelecting" prefHeight="30.0" prefWidth="213.0" />
+      <Label layoutX="359.0" layoutY="15.0" prefHeight="30.0" prefWidth="91.0" text="Код по ОКПО" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="valueOCPO" alignment="CENTER_RIGHT" layoutX="470.0" layoutY="15.0" prefHeight="30.0" prefWidth="139.0" textAlignment="RIGHT">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <PrefixSelectionComboBox fx:id="unit" layoutX="131.0" layoutY="53.0" onAction="#unitSelecting" prefHeight="30.0" prefWidth="213.0" />
+      <DatePicker fx:id="dateFrom" layoutX="910.0" layoutY="72.0" onAction="#dateFromAction" prefHeight="26.0" prefWidth="150.0" />
+      <DatePicker fx:id="dateTo" layoutX="1101.0" layoutY="72.0" onAction="#dateToAction" prefHeight="26.0" prefWidth="150.0" />
+      <Label layoutX="893.0" layoutY="68.0" prefHeight="30.0" prefWidth="10.0" text="с" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="1074.0" layoutY="70.0" prefHeight="30.0" prefWidth="27.0" text="по" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="numDocument" layoutX="924.0" layoutY="12.0" prefHeight="26.0" prefWidth="56.0" />
+      <Label layoutX="999.0" layoutY="8.0" prefHeight="30.0" prefWidth="27.0" text="от" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dateDocument" layoutX="1026.0" layoutY="12.0" prefHeight="26.0" prefWidth="150.0" />
+      <Label layoutX="760.0" layoutY="70.0" prefHeight="30.0" prefWidth="120.0" text="Учётный период:" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="359.0" layoutY="50.0" prefHeight="30.0" prefWidth="91.0" text="Код по ОКДП" textAlignment="CENTER">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="OCDP" alignment="CENTER_RIGHT" layoutX="470.0" layoutY="50.0" prefHeight="30.0" prefWidth="139.0" textAlignment="RIGHT">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </AnchorPane>
+   <TableView fx:id="mainTable" layoutX="10.0" layoutY="108.0" prefHeight="335.0" prefWidth="1325.0">
+      <columns>
+         <TableColumn fx:id="number" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" text="№" />
+         <TableColumn fx:id="name" maxWidth="267.0" minWidth="220.0" prefWidth="267.0" resizable="false" text="Наименование товара" />
+         <TableColumn fx:id="productCode" maxWidth="107.0" minWidth="60.0" prefWidth="103.0" resizable="false" text="Код товара" />
+         <TableColumn fx:id="measures" maxWidth="179.0" minWidth="59.0" prefWidth="76.0" resizable="false" text="Ед.изм" />
+         <TableColumn fx:id="measuresCode" maxWidth="123.0" minWidth="21.0" prefWidth="72.0" resizable="false" text="ОКЕИ" />
+         <TableColumn fx:id="cost" maxWidth="181.0" minWidth="0.0" prefWidth="122.0" resizable="false" text="Учётная цена" />
+      </columns>
+   </TableView>
+   <Separator layoutX="10.0" layoutY="455.0" prefHeight="3.0" prefWidth="1280.0" />
+   <TableView fx:id="costTable" layoutX="535.0" layoutY="480.0" prefHeight="55.0" prefWidth="751.0" />
+   <Separator layoutX="10.0" layoutY="563.0" prefWidth="1280.0" />
+   <Label alignment="CENTER" layoutX="535.0" layoutY="458.0" text="Итого по ведомости" textAlignment="CENTER">
+      <font>
+         <Font size="13.0" />
+      </font>
+   </Label>
+   <Button fx:id="saveButton" layoutX="10.0" layoutY="530.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="238.0" text="Сохранить документ в .xlsx" />
+   <Button layoutX="14.0" layoutY="467.0" mnemonicParsing="false" onAction="#showPeoples" prefHeight="26.0" prefWidth="238.0" text="Ответственные лица" />
+</AnchorPane>
